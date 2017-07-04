@@ -2216,8 +2216,7 @@ o 2013/03/29 03:39:00
    "
 YY 2015
 "
-   '("YY 2015
-"  ledger-font-default-face)))
+   nil))
 
 
 (ert-deftest ledger-fontify/test-098 ()
@@ -2228,8 +2227,7 @@ YY 2015
    "
 payeee Charity
 "
-   '("payeee Charity
-"  ledger-font-default-face)))
+   nil))
 
 
 (provide 'fontify-test)
