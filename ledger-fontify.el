@@ -83,10 +83,7 @@
     (goto-char (car extents))
     (forward-line)
     (while (< (point) (cadr extents))
-      (if (looking-at "[ \t]+;")
-          (ledger-fontify-set-face (list (point) (progn
-                                                   (end-of-line)
-                                                   (point))) 'ledger-font-comment-face)
+      (unless (looking-at "[ \t]+;")
         (ledger-fontify-posting (point)))
       (forward-line))))
 
