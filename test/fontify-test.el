@@ -228,9 +228,18 @@ account Assets:Bank5:LDD
     ; boobank-id: YYY
 "
  '("account Assets:Bank1:Checking
-"                                  ledger-font-account-directive-face ; FIXME try to fontify the full directive, note included?
+"                                ledger-font-account-directive-face
+"note foo"                       ledger-font-note-directive-face
+"; country: it"                  ledger-font-comment-face
+"; IBAN: XXX"                    ledger-font-comment-face
+"; ledger-file: current.ledger"  ledger-font-comment-face
    "account Assets:Bank5:LDD
-"                                  ledger-font-account-directive-face)))
+"                                ledger-font-account-directive-face
+"note foo bar baz"               ledger-font-note-directive-face
+"note foo bar baz"               ledger-font-note-directive-face
+"; country: fr"                  ledger-font-comment-face
+"; cmut-id: XXX"                 ledger-font-comment-face
+"; boobank-id: YYY"              ledger-font-comment-face)))
 
 
 (ert-deftest ledger-fontify/test-008 ()
@@ -432,6 +441,7 @@ account Assets:StarOne Savings
 "
  '("account Assets:StarOne Savings
 "                              ledger-font-account-directive-face
+   "alias starone"             ledger-font-alias-directive-face
    "2014/05/07"                ledger-font-posting-date-face
    "   CoinStar Jar of Coins"  ledger-font-payee-uncleared-face
    "    cash  "                ledger-font-posting-account-face
@@ -1734,7 +1744,7 @@ define ten_dollars(s, date, t) = market($10, date, t)
   "Command Directives: account"
   :tags '(font baseline)
 
-  (ledger-test-font-lock  ; FIXME automated transaction fontification does handle multiline directive, why not for account directive ? Warning, "apply account" directive should not fontify the following lines, see ledger-test-font-lock/73
+  (ledger-test-font-lock
    "
 account Expenses:Food
     note This account is all about the chicken!
@@ -1746,7 +1756,14 @@ account Expenses:Food
     default
 "
    '("account Expenses:Food
-"  ledger-font-account-directive-face)))
+"                                              ledger-font-account-directive-face
+"note This account is all about the chicken!"  ledger-font-note-directive-face
+"alias food"                                   ledger-font-alias-directive-face
+"payee ^(KFC|Popeyes)$"                        ledger-font-payee-directive-face
+"check commodity == \"$\""                     ledger-font-check-directive-face
+"assert commodity == \"$\""                    ledger-font-assert-directive-face
+"eval print(\"Hello!\")"                       ledger-font-expr-directive-face
+"default"                                      ledger-font-default-directive-face)))
 
 
 
