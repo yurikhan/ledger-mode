@@ -1925,7 +1925,11 @@ commodity $
    default
 "
    '("commodity $
-"  ledger-font-commodity-directive-face)))
+"                        ledger-font-commodity-directive-face
+"note American Dollars"  ledger-font-note-directive-face
+"format $1,000.00"       ledger-font-format-directive-face
+"nomarket"               ledger-font-N-directive-face
+"default"                ledger-font-default-directive-face)))
 
 
 
