@@ -2042,7 +2042,9 @@ payee KFC
     uuid 2a2e21d434356f886c84371eebac6e44f1337fda
 "
    '("payee KFC
-"  ledger-font-payee-directive-face)))
+"                                                ledger-font-payee-directive-face
+"alias KENTUCKY FRIED CHICKEN"                   ledger-font-alias-directive-face
+"uuid 2a2e21d434356f886c84371eebac6e44f1337fda"  ledger-font-uuid-directive-face)))
 
 
 
