@@ -332,15 +332,18 @@ P 2014-01-01 WBDES $100.00
 "
  '("; Budget ========================================================
 " ledger-font-comment-face
-"~ Weekly
-    b9f7b467:53dd031c:379c2da8               $100.00
-    df0fcf15" ledger-font-periodic-xact-face
-    "~ Biweekly until 2014-04-03
-    b9f7b467:53dd031c:379c2da8               $100.00
-    df0fcf15" ledger-font-periodic-xact-face
-    "~ Biweekly from 2014-04-03 until 2014-09-18
-    b9f7b467:53dd031c:379c2da8               $100.00
-    df0fcf15" ledger-font-periodic-xact-face
+    "~ Weekly" ledger-font-periodic-xact-face
+    "    b9f7b467:53dd031c:379c2da8  " ledger-font-posting-account-face
+    "             $100.00" ledger-font-posting-amount-face
+    "    df0fcf15" ledger-font-posting-account-face
+    "~ Biweekly until 2014-04-03" ledger-font-periodic-xact-face
+    "    b9f7b467:53dd031c:379c2da8  " ledger-font-posting-account-face
+    "             $100.00" ledger-font-posting-amount-face
+    "    df0fcf15" ledger-font-posting-account-face
+    "~ Biweekly from 2014-04-03 until 2014-09-18" ledger-font-periodic-xact-face
+    "    b9f7b467:53dd031c:379c2da8  " ledger-font-posting-account-face
+    "             $100.00" ledger-font-posting-amount-face
+    "    df0fcf15" ledger-font-posting-account-face
     "; Pricing =======================================================
 " ledger-font-comment-face
 "P 2014-01-01 WRCOM $100.00
@@ -550,6 +553,21 @@ https://groups.google.com/d/msg/ledger-cli/9zyWZW_fJmk/G56uVsqv0FAJ"
   :tags '(font regress)
 
   (let ((str "
+~ Weekly
+    b9f7b467:53dd031c:379c2da8               $100.00
+    df0fcf15
+
+~ Biweekly until 2014-04-03
+    b9f7b467:53dd031c:379c2da8               $100.00
+    df0fcf15
+
+~ Biweekly from 2014-04-03 until 2014-09-18
+    b9f7b467:53dd031c:379c2da8               $100.00
+    df0fcf15
+
+= /^(?:Income:|Expenses:(?:Business|Rent$|Furnishings|Taxes|Insurance))/
+  (Liabilities:Huququ'llah)               0.19
+
 2010/12/01 * Checking balance  ; note
   Assets:Checking                   $1,000.00
   Equity:Opening Balances
@@ -563,7 +581,11 @@ https://groups.google.com/d/msg/ledger-cli/9zyWZW_fJmk/G56uVsqv0FAJ"
   Equity:Opening Balances
 ")
         (face-groups
-         '("2010/12/01 * Checking balance  ; note\n  Assets:Checking                   $1,000.00\n  Equity:Opening Balances" ledger-font-xact-cleared-face
+         '("~ Weekly\n    b9f7b467:53dd031c:379c2da8               $100.00\n    df0fcf15" ledger-font-periodic-xact-face
+           "~ Biweekly until 2014-04-03\n    b9f7b467:53dd031c:379c2da8               $100.00\n    df0fcf15" ledger-font-periodic-xact-face
+           "~ Biweekly from 2014-04-03 until 2014-09-18\n    b9f7b467:53dd031c:379c2da8               $100.00\n    df0fcf15" ledger-font-periodic-xact-face
+           "= /^(?:Income:|Expenses:(?:Business|Rent$|Furnishings|Taxes|Insurance))/\n  (Liabilities:Huququ'llah)               0.19" ledger-font-auto-xact-face
+           "2010/12/01 * Checking balance  ; note\n  Assets:Checking                   $1,000.00\n  Equity:Opening Balances" ledger-font-xact-cleared-face
            "2010/12/01 ! Checking balance  ; note\n  Assets:Checking                   $1,000.00\n  Equity:Opening Balances" ledger-font-xact-pending-face
            "2010/12/01"                  ledger-font-posting-date-face
            " Checking balance  "         ledger-font-payee-uncleared-face
@@ -1467,14 +1489,16 @@ define ten_dollars(s, date, t) = market($10, date, t)
     Expenses:Food                $20.00
     Assets:Cash
 "
-   '("= expr true
-    Foo                          $50.00
-    Bar                         $-50.00"  ledger-font-auto-xact-face
-    "2012-03-10"                          ledger-font-posting-date-face
-    " KFC"                                ledger-font-payee-uncleared-face
-    "    Expenses:Food  "                 ledger-font-posting-account-face
-    "              $20.00"                ledger-font-posting-amount-face
-    "    Assets:Cash"                     ledger-font-posting-account-face)))
+   '("= expr true"                     ledger-font-auto-xact-face
+     "    Foo  "                       ledger-font-posting-account-face
+     "                        $50.00"  ledger-font-posting-amount-face
+     "    Bar  "                       ledger-font-posting-account-face
+     "                       $-50.00"  ledger-font-posting-amount-face
+     "2012-03-10"                      ledger-font-posting-date-face
+     " KFC"                            ledger-font-payee-uncleared-face
+     "    Expenses:Food  "             ledger-font-posting-account-face
+     "              $20.00"            ledger-font-posting-amount-face
+     "    Assets:Cash"                 ledger-font-posting-account-face)))
 
 
 
@@ -1492,14 +1516,16 @@ define ten_dollars(s, date, t) = market($10, date, t)
     Expenses:Food                $20.00
     Assets:Cash
 "
-   '("= expr true
-    Foo                           50.00
-    Bar                          -50.00"  ledger-font-auto-xact-face
-    "2012-03-10"                          ledger-font-posting-date-face
-    " KFC"                                ledger-font-payee-uncleared-face
-    "    Expenses:Food  "                 ledger-font-posting-account-face
-    "              $20.00"                ledger-font-posting-amount-face
-    "    Assets:Cash"                     ledger-font-posting-account-face)))
+   '("= expr true"                     ledger-font-auto-xact-face
+     "    Foo  "                       ledger-font-posting-account-face
+     "                         50.00"  ledger-font-posting-amount-face
+     "    Bar  "                       ledger-font-posting-account-face
+     "                        -50.00"  ledger-font-posting-amount-face
+     "2012-03-10"                      ledger-font-posting-date-face
+     " KFC"                            ledger-font-payee-uncleared-face
+     "    Expenses:Food  "             ledger-font-posting-account-face
+     "              $20.00"            ledger-font-posting-amount-face
+     "    Assets:Cash"                 ledger-font-posting-account-face)))
 
 
 
@@ -1516,13 +1542,15 @@ define ten_dollars(s, date, t) = market($10, date, t)
     Expenses:Food                $20.00
     Assets:Cash
 "
-   '("= expr true
-    (Foo)                  (amount * 2)  ; same as just 2 in this case"  ledger-font-auto-xact-face
-    "2012-03-10"                                                         ledger-font-posting-date-face
-    " KFC"                                                               ledger-font-payee-uncleared-face
-    "    Expenses:Food  "                                                ledger-font-posting-account-face
-    "              $20.00"                                               ledger-font-posting-amount-face
-    "    Assets:Cash"                                                    ledger-font-posting-account-face)))
+   '("= expr true"                     ledger-font-auto-xact-face
+     "    (Foo)  "                     ledger-font-posting-account-face
+     "                (amount * 2)  "  ledger-font-posting-amount-face
+     "; same as just 2 in this case"   ledger-font-comment-face
+     "2012-03-10"                      ledger-font-posting-date-face
+     " KFC"                            ledger-font-payee-uncleared-face
+     "    Expenses:Food  "             ledger-font-posting-account-face
+     "              $20.00"            ledger-font-posting-amount-face
+     "    Assets:Cash"                 ledger-font-posting-account-face)))
 
 
 
@@ -1539,13 +1567,14 @@ define ten_dollars(s, date, t) = market($10, date, t)
     Expenses:Food                $20.00
     Assets:Cash
 "
-   '("= food
-    (Budget:$account)                10"  ledger-font-auto-xact-face
-    "2012-03-10"                          ledger-font-posting-date-face
-    " KFC"                                ledger-font-payee-uncleared-face
-    "    Expenses:Food  "                 ledger-font-posting-account-face
-    "              $20.00"                ledger-font-posting-amount-face
-    "    Assets:Cash"                     ledger-font-posting-account-face)))
+   '("= food"                   ledger-font-auto-xact-face
+     "    (Budget:$account)  "  ledger-font-posting-account-face
+     "              10"         ledger-font-posting-amount-face
+     "2012-03-10"               ledger-font-posting-date-face
+     " KFC"                     ledger-font-payee-uncleared-face
+     "    Expenses:Food  "      ledger-font-posting-account-face
+     "              $20.00"     ledger-font-posting-amount-face
+     "    Assets:Cash"          ledger-font-posting-account-face)))
 
 
 
@@ -1563,14 +1592,15 @@ define ten_dollars(s, date, t) = market($10, date, t)
     Expenses:Food                $20.00
     Assets:Cash
 "
-   '("= food
-    ; Foo: Bar
-    (Budget:$account)                10"  ledger-font-auto-xact-face
-    "2012-03-10"                          ledger-font-posting-date-face
-    " KFC"                                ledger-font-payee-uncleared-face
-    "    Expenses:Food  "                 ledger-font-posting-account-face
-    "              $20.00"                ledger-font-posting-amount-face
-    "    Assets:Cash"                     ledger-font-posting-account-face)))
+   '("= food"                   ledger-font-auto-xact-face
+     "    ; Foo: Bar"           ledger-font-comment-face
+     "    (Budget:$account)  "  ledger-font-posting-account-face
+     "              10"         ledger-font-posting-amount-face
+     "2012-03-10"               ledger-font-posting-date-face
+     " KFC"                     ledger-font-payee-uncleared-face
+     "    Expenses:Food  "      ledger-font-posting-account-face
+     "              $20.00"     ledger-font-posting-amount-face
+     "    Assets:Cash"          ledger-font-posting-account-face)))
 
 
 
@@ -1588,14 +1618,15 @@ define ten_dollars(s, date, t) = market($10, date, t)
     Expenses:Food                $20.00
     Assets:Cash
 "
-   '("= food
-    (Budget:$account)                10
-      ; Foo: Bar"                        ledger-font-auto-xact-face
-     "2012-03-10"                        ledger-font-posting-date-face
-     " KFC"                              ledger-font-payee-uncleared-face
-     "    Expenses:Food  "               ledger-font-posting-account-face
-     "              $20.00"              ledger-font-posting-amount-face
-     "    Assets:Cash"                   ledger-font-posting-account-face)))
+   '("= food"                   ledger-font-auto-xact-face
+     "    (Budget:$account)  "  ledger-font-posting-account-face
+     "              10"         ledger-font-posting-amount-face
+     "      ; Foo: Bar"         ledger-font-comment-face
+     "2012-03-10"               ledger-font-posting-date-face
+     " KFC"                     ledger-font-payee-uncleared-face
+     "    Expenses:Food  "      ledger-font-posting-account-face
+     "              $20.00"     ledger-font-posting-amount-face
+     "    Assets:Cash"          ledger-font-posting-account-face)))
 
 
 
@@ -1660,19 +1691,29 @@ define ten_dollars(s, date, t) = market($10, date, t)
     Expenses:Auto:Repair        $500.00
     Assets
 "
-   '("~ Monthly
-    Expenses:Rent               $500.00
-    Expenses:Food               $450.00
-    Expenses:Auto:Gas           $120.00
-    Expenses:Insurance          $150.00
-    Expenses:Phone              $125.00
-    Expenses:Utilities          $100.00
-    Expenses:Movies              $50.00
-    Expenses                    $200.00  ; all other expenses
-    Assets"  ledger-font-periodic-xact-face
-    "~ Yearly
-    Expenses:Auto:Repair        $500.00
-    Assets"  ledger-font-periodic-xact-face)))
+   '("~ Monthly"                    ledger-font-periodic-xact-face
+     "    Expenses:Rent  "          ledger-font-posting-account-face
+     "             $500.00"         ledger-font-posting-amount-face
+     "    Expenses:Food  "          ledger-font-posting-account-face
+     "             $450.00"         ledger-font-posting-amount-face
+     "    Expenses:Auto:Gas  "      ledger-font-posting-account-face
+     "         $120.00"             ledger-font-posting-amount-face
+     "    Expenses:Insurance  "     ledger-font-posting-account-face
+     "        $150.00"              ledger-font-posting-amount-face
+     "    Expenses:Phone  "         ledger-font-posting-account-face
+     "            $125.00"          ledger-font-posting-amount-face
+     "    Expenses:Utilities  "     ledger-font-posting-account-face
+     "        $100.00"              ledger-font-posting-amount-face
+     "    Expenses:Movies  "        ledger-font-posting-account-face
+     "            $50.00"           ledger-font-posting-amount-face
+     "    Expenses  "               ledger-font-posting-account-face
+     "                  $200.00  "  ledger-font-posting-amount-face
+     "; all other expenses"         ledger-font-comment-face
+     "    Assets"                   ledger-font-posting-account-face
+     "~ Yearly"                     ledger-font-periodic-xact-face
+     "    Expenses:Auto:Repair  "   ledger-font-posting-account-face
+     "      $500.00"                ledger-font-posting-amount-face
+     "    Assets"                   ledger-font-posting-account-face)))
 
 
 
@@ -1689,14 +1730,16 @@ define ten_dollars(s, date, t) = market($10, date, t)
   Income:Salary  -$1000
   Assets:Checking
 "
-   '("= /^(?:Income:|Expenses:(?:Business|Rent$|Furnishings|Taxes|Insurance))/
-  (Liabilities:Huququ'llah)               0.19"  ledger-font-auto-xact-face
-  "2003/01/01"                                   ledger-font-posting-date-face
-  " (99)"                                        ledger-font-code-face
-  " Salary"                                      ledger-font-payee-uncleared-face
-  "  Income:Salary  "                            ledger-font-posting-account-face
-  "-$1000"                                       ledger-font-posting-amount-face
-  "  Assets:Checking"                            ledger-font-posting-account-face)))
+   '("= /^(?:Income:|Expenses:(?:Business|Rent$|Furnishings|Taxes|Insurance))/"
+                                      ledger-font-auto-xact-face
+     "  (Liabilities:Huququ'llah)  "  ledger-font-posting-account-face
+     "             0.19"              ledger-font-posting-amount-face
+     "2003/01/01"                     ledger-font-posting-date-face
+     " (99)"                          ledger-font-code-face
+     " Salary"                        ledger-font-payee-uncleared-face
+     "  Income:Salary  "              ledger-font-posting-account-face
+     "-$1000"                         ledger-font-posting-amount-face
+     "  Assets:Checking"              ledger-font-posting-account-face)))
 
 
 
