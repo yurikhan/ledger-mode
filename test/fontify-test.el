@@ -1933,6 +1933,7 @@ assert comment =~ /REGEX/
 
   (ledger-test-font-lock
    "
+bucket
 bucket Assets:Checking
 2011/01/25 Tom's Used Cars
     Expenses:Auto                    $ 5,500.00
@@ -1943,20 +1944,21 @@ bucket Assets:Checking
 2011/12/01 Sale
     Assets:Checking:Business            $ 30.00
 "
-   '("bucket Assets:Checking
-"                                 ledger-font-bucket-directive-face
-"2011/01/25"                      ledger-font-posting-date-face
-" Tom's Used Cars"                ledger-font-payee-uncleared-face
-"    Expenses:Auto  "             ledger-font-posting-account-face
-"                  $ 5,500.00"    ledger-font-posting-amount-face
-"2011/01/27"                      ledger-font-posting-date-face
-" Book Store"                     ledger-font-payee-uncleared-face
-"    Expenses:Books  "            ledger-font-posting-account-face
-"                     $20.00"     ledger-font-posting-amount-face
-"2011/12/01"                      ledger-font-posting-date-face
-" Sale"                           ledger-font-payee-uncleared-face
-"    Assets:Checking:Business  "  ledger-font-posting-account-face
-"          $ 30.00"               ledger-font-posting-amount-face)))
+   '("bucket"                          ledger-font-bucket-directive-face
+     "bucket"                          ledger-font-bucket-directive-face
+     "Assets:Checking"                 ledger-font-bucket-account-face
+     "2011/01/25"                      ledger-font-posting-date-face
+     " Tom's Used Cars"                ledger-font-payee-uncleared-face
+     "    Expenses:Auto  "             ledger-font-posting-account-face
+     "                  $ 5,500.00"    ledger-font-posting-amount-face
+     "2011/01/27"                      ledger-font-posting-date-face
+     " Book Store"                     ledger-font-payee-uncleared-face
+     "    Expenses:Books  "            ledger-font-posting-account-face
+     "                     $20.00"     ledger-font-posting-amount-face
+     "2011/12/01"                      ledger-font-posting-date-face
+     " Sale"                           ledger-font-payee-uncleared-face
+     "    Assets:Checking:Business  "  ledger-font-posting-account-face
+     "          $ 30.00"               ledger-font-posting-amount-face)))
 
 
 
@@ -2263,8 +2265,8 @@ year 2004
    "
 A Assets:Checking
 "
-   '("A Assets:Checking
-"  ledger-font-bucket-directive-face)))
+   '("A"                ledger-font-bucket-directive-face
+     "Assets:Checking"  ledger-font-bucket-account-face)))
 
 
 
