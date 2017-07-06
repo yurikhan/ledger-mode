@@ -1844,21 +1844,28 @@ account Expenses:Food
 
   (ledger-test-font-lock
    "
+apply
+apply account
 apply account Personal
 2011/11/15  Supermarket
     Expenses:Groceries      $ 50.00
     Assets:Checking
 end apply account
+
 "
-   '("apply account Personal
-"                           ledger-font-apply-directive-face
-"2011/11/15"                ledger-font-posting-date-face
-"  Supermarket"             ledger-font-payee-uncleared-face
-"    Expenses:Groceries  "  ledger-font-posting-account-face
-"    $ 50.00"               ledger-font-posting-amount-face
-"    Assets:Checking"       ledger-font-posting-account-face
-"end apply account
-"                           ledger-font-end-directive-face)))
+   '("apply"                     ledger-font-apply-directive-face
+     "apply"                     ledger-font-apply-directive-face
+     "account"                   ledger-font-apply-directive-face
+     "apply"                     ledger-font-apply-directive-face
+     "account"                   ledger-font-apply-directive-face
+     "Personal"                  ledger-font-apply-account-face
+     "2011/11/15"                ledger-font-posting-date-face
+     "  Supermarket"             ledger-font-payee-uncleared-face
+     "    Expenses:Groceries  "  ledger-font-posting-account-face
+     "    $ 50.00"               ledger-font-posting-amount-face
+     "    Assets:Checking"       ledger-font-posting-account-face
+     "end apply account
+"                                ledger-font-end-directive-face)))
 
 
 
@@ -2139,6 +2146,8 @@ payee KFC
 
   (ledger-test-font-lock
    "
+apply
+apply tag
 apply tag hastag
 apply tag nestedtag: true
 
@@ -2159,29 +2168,35 @@ end apply tag
 
 end apply tag
 "
-   '("apply tag hastag
-apply tag nestedtag: true
-"                                 ledger-font-apply-directive-face
-"2011/01/25"                      ledger-font-posting-date-face
-" Tom's Used Cars"                ledger-font-payee-uncleared-face
-"    Expenses:Auto  "             ledger-font-posting-account-face
-"                  $ 5,500.00"    ledger-font-posting-amount-face
-"    ; :nobudget:"                ledger-font-comment-face
-"    Assets:Checking"             ledger-font-posting-account-face
-"2011/01/27"                      ledger-font-posting-date-face
-" Book Store"                     ledger-font-payee-uncleared-face
-"    Expenses:Books  "            ledger-font-posting-account-face
-"                     $20.00"     ledger-font-posting-amount-face
-"    Liabilities:MasterCard"      ledger-font-posting-account-face
-"end apply tag
-"                                 ledger-font-end-directive-face
-"2011/12/01"                      ledger-font-posting-date-face
-" Sale"                           ledger-font-payee-uncleared-face
-"    Assets:Checking:Business  "  ledger-font-posting-account-face
-"          $ 30.00"               ledger-font-posting-amount-face
-"    Income:Sales"                ledger-font-posting-account-face
-"end apply tag
-"                                 ledger-font-end-directive-face)))
+   '("apply"                           ledger-font-apply-directive-face
+     "apply"                           ledger-font-apply-directive-face
+     "tag"                             ledger-font-apply-directive-face
+     "apply"                           ledger-font-apply-directive-face
+     "tag"                             ledger-font-apply-directive-face
+     "hastag"                          ledger-font-apply-tag-face
+     "apply"                           ledger-font-apply-directive-face
+     "tag"                             ledger-font-apply-directive-face
+     "nestedtag: true"                 ledger-font-apply-tag-face
+     "2011/01/25"                      ledger-font-posting-date-face
+     " Tom's Used Cars"                ledger-font-payee-uncleared-face
+     "    Expenses:Auto  "             ledger-font-posting-account-face
+     "                  $ 5,500.00"    ledger-font-posting-amount-face
+     "    ; :nobudget:"                ledger-font-comment-face
+     "    Assets:Checking"             ledger-font-posting-account-face
+     "2011/01/27"                      ledger-font-posting-date-face
+     " Book Store"                     ledger-font-payee-uncleared-face
+     "    Expenses:Books  "            ledger-font-posting-account-face
+     "                     $20.00"     ledger-font-posting-amount-face
+     "    Liabilities:MasterCard"      ledger-font-posting-account-face
+     "end apply tag
+"                                      ledger-font-end-directive-face
+     "2011/12/01"                      ledger-font-posting-date-face
+     " Sale"                           ledger-font-payee-uncleared-face
+     "    Assets:Checking:Business  "  ledger-font-posting-account-face
+     "          $ 30.00"               ledger-font-posting-amount-face
+     "    Income:Sales"                ledger-font-posting-account-face
+     "end apply tag
+"                                      ledger-font-end-directive-face)))
 
 
 
