@@ -496,8 +496,13 @@ See `font-lock-keywords' for the full description."
      (1 'ledger-font-define-directive-face)
      (2 'ledger-font-define-name-face nil :lax)
      (3 'ledger-font-define-body-face nil :lax))
-    ;; FIXME: this matches “end” and “endfixed” but also “endoscopy”
-    ("^end.*\n" . 'ledger-font-end-directive-face)
+    (,(concat "^\\(end\\)"
+              "\\(?:[[:blank:]]+\\(apply\\)"
+              "\\(?:[[:blank:]]+\\(account\\|tag\\)\\>.*\\)?\\)?$")
+     (1 'ledger-font-end-directive-face)
+     (2 'ledger-font-end-directive-face nil :lax)
+     (3 'ledger-font-end-directive-face nil :lax))
+    ("^endfixed\\>.*\n" . 'ledger-font-end-directive-face)
     ("^expr\\>.*\n" . 'ledger-font-expr-directive-face)
     ("^fixed\\>.*\n" . 'ledger-font-fixed-directive-face)
     ("^include\\>.*\n" . 'ledger-font-include-directive-face)
