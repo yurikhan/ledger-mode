@@ -2108,17 +2108,17 @@ end apply tag
 
 
 (ert-deftest ledger-fontify/test-083 ()
-  "Command Directives: expr "
+  "Command Directives: expr"
   :tags '(font baseline)
 
-  ;; WARNING: do NOT remove the space after expr
   (ledger-test-font-lock
    "
-expr 
+expr
+expr 2*2
 "
-   ;; WARNING: do NOT remove the space after expr
-   '("expr 
-"  ledger-font-expr-directive-face)))
+   '("expr"  ledger-font-expr-directive-face
+     "expr"  ledger-font-expr-directive-face
+     "2*2"   ledger-font-expr-expression-face)))
 
 
 
