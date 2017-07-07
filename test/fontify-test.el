@@ -2128,6 +2128,8 @@ expr
 
   (ledger-test-font-lock
    "
+fixed
+fixed CAD
 fixed CAD $0.90
 2012-04-10 Lunch in Canada
     Assets:Wallet            -15.50 CAD
@@ -2136,24 +2138,30 @@ fixed CAD $0.90
 2012-04-11 Second day Dinner in Canada
     Assets:Wallet            -25.75 CAD
     Expenses:Food            25.75 CAD
+endfixed
 endfixed CAD
 "
-   '("fixed CAD $0.90
-"                               ledger-font-fixed-directive-face
-"2012-04-10"                    ledger-font-posting-date-face
-" Lunch in Canada"              ledger-font-payee-uncleared-face
-"    Assets:Wallet  "           ledger-font-posting-account-face
-"          -15.50 CAD"          ledger-font-posting-amount-face
-"    Expenses:Food  "           ledger-font-posting-account-face
-"          15.50 CAD"           ledger-font-posting-amount-face
-"2012-04-11"                    ledger-font-posting-date-face
-" Second day Dinner in Canada"  ledger-font-payee-uncleared-face
-"    Assets:Wallet  "           ledger-font-posting-account-face
-"          -25.75 CAD"          ledger-font-posting-amount-face
-"    Expenses:Food  "           ledger-font-posting-account-face
-"          25.75 CAD"           ledger-font-posting-amount-face
-"endfixed CAD
-"                               ledger-font-end-directive-face)))
+   '("fixed"                         ledger-font-fixed-directive-face
+     "fixed"                         ledger-font-fixed-directive-face
+     "CAD"                           ledger-font-fixed-commodity-face
+     "fixed"                         ledger-font-fixed-directive-face
+     "CAD"                           ledger-font-fixed-commodity-face
+     "$0.90"                         ledger-font-fixed-price-face
+     "2012-04-10"                    ledger-font-posting-date-face
+     " Lunch in Canada"              ledger-font-payee-uncleared-face
+     "    Assets:Wallet  "           ledger-font-posting-account-face
+     "          -15.50 CAD"          ledger-font-posting-amount-face
+     "    Expenses:Food  "           ledger-font-posting-account-face
+     "          15.50 CAD"           ledger-font-posting-amount-face
+     "2012-04-11"                    ledger-font-posting-date-face
+     " Second day Dinner in Canada"  ledger-font-payee-uncleared-face
+     "    Assets:Wallet  "           ledger-font-posting-account-face
+     "          -25.75 CAD"          ledger-font-posting-amount-face
+     "    Expenses:Food  "           ledger-font-posting-account-face
+     "          25.75 CAD"           ledger-font-posting-amount-face
+     "endfixed"                      ledger-font-end-directive-face
+     "endfixed"                      ledger-font-end-directive-face
+     "CAD"                           ledger-font-fixed-commodity-face)))
 
 
 
