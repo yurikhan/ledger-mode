@@ -2171,10 +2171,12 @@ endfixed CAD
 
   (ledger-test-font-lock
    "
+include
 include file.ledger
 "
-   '("include file.ledger
-"  ledger-font-include-directive-face)))
+   '("include"  ledger-font-include-directive-face
+     "include"  ledger-font-include-directive-face
+     "file.ledger" ledger-font-include-filename-face)))
 
 
 
