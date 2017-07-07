@@ -2340,10 +2340,12 @@ Y 2016
 
   (ledger-test-font-lock
    "
+N
 N SYMBOL
 "
-   '("N SYMBOL
-"  ledger-font-N-directive-face)))
+   '("N"  ledger-font-N-directive-face
+     "N"  ledger-font-N-directive-face
+     "SYMBOL" ledger-font-N-symbol-face)))
 
 
 
