@@ -40,8 +40,8 @@
 (defun ledger-fontify-extend-region ()
   "Extend fontification region to include whole transactions or directives."
   (save-match-data
-    (let* ((new-beg (car (ledger-navigate-find-element-extents font-lock-beg)))
-           (new-end (cadr (ledger-navigate-find-element-extents font-lock-end)))
+    (let* ((new-beg (min font-lock-beg (car (ledger-navigate-find-element-extents font-lock-beg))))
+           (new-end (max font-lock-end (cadr (ledger-navigate-find-element-extents font-lock-end))))
            (changed (or (/= new-beg font-lock-beg)
                         (/= new-end font-lock-end))))
       (setq font-lock-beg new-beg)
